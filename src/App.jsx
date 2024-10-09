@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router';
+import { Layout } from './components/Layout/Layout.jsx';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
+const CatalogPage = lazy(() => import('./pages/Catalog/Catalog.jsx'));
+const CamperPage = lazy(() => import('./pages/CamperPage/CamperPage.jsx'));
 
 function App() {
   return (
     <>
-      <div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/catalog/:id" element={<CamperPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
     </>
   );
 }
