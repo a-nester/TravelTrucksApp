@@ -20,11 +20,11 @@ export const campersSlice = createSlice({
       .addCase(getAllCampers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.items = payload.items;
-        console.log(state.items);
       })
       .addCase(getCamperById.pending, handlePending)
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.itemById = payload;
+        console.log(state.itemById);
       });
   },
 });
