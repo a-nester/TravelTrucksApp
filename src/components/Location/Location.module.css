@@ -1,0 +1,37 @@
+.location {
+  display: flex;
+  flex-direction: column;
+  height: 24px;
+  gap: 8px;
+}
+
+.text {
+  color: var(--grey);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 56px;
+  background-color: var(--grey-input);
+  border-radius: 12px;
+  padding-left: 48px;
+}
+
+.icon {
+  position: absolute;
+  left: 20px;
+  color: var(--grey);
+}
+
+.iconFilled {
+  position: absolute;
+  left: 20px;
+  color: var(--main-black);
+}
