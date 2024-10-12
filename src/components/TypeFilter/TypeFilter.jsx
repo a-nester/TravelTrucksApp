@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import styles from './Equipment.module.css';
+import styles from './TypeFilter.module.css';
 import sprite from 'assets/icons/sprite.svg';
 
-export const Equipment = () => {
+export const TypeFilter = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const equipmentOptions = {
-    AC: `${sprite}#wind`,
-    Automatic: `${sprite}#diagram`,
-    Kitchen: `${sprite}#cup-hot`,
-    TV: `${sprite}#tv`,
-    Bathroom: `${sprite}#bi_droplet`,
+  const typeOptions = {
+    Van: `${sprite}#bi_grid-1x2`,
+    Fully_Integrated: `${sprite}#bi_grid`,
+    Alcov: `${sprite}#bi_grid-3x3-gap`,
   };
 
   const handleOptionChange = elem => {
@@ -22,11 +20,11 @@ export const Equipment = () => {
   };
 
   return (
-    <div className={styles.equipmentContainer}>
-      <h2 className={styles.title}>Vehicle equipment</h2>
+    <div className={styles.typeFilterContainer}>
+      <h2 className={styles.title}>Vehicle type</h2>
       <div className={styles.divider}></div>
       <div className={styles.options}>
-        {Object.keys(equipmentOptions).map(elem => (
+        {Object.keys(typeOptions).map(elem => (
           <label
             key={elem}
             className={`${styles.optionBox}
@@ -40,9 +38,9 @@ export const Equipment = () => {
             />
 
             <svg width={32} height={32}>
-              <use href={`${equipmentOptions[elem]}`} />
+              <use href={`${typeOptions[elem]}`} />
             </svg>
-            <p>{elem}</p>
+            <p className={styles.text}>{elem.replace(/_/g, ' ')}</p>
           </label>
         ))}
       </div>
@@ -50,4 +48,4 @@ export const Equipment = () => {
   );
 };
 
-export default Equipment;
+export default TypeFilter;

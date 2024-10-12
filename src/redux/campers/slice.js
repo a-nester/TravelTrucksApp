@@ -24,7 +24,6 @@ export const campersSlice = createSlice({
       .addCase(getCamperById.pending, handlePending)
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.itemById = payload;
-        console.log(state.itemById);
       });
   },
 });
