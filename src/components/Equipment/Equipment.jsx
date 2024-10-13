@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Equipment.module.css';
 import sprite from 'assets/icons/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { addEquipment } from '../../redux/filters/slice';
 
 export const Equipment = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const dispatch = useDispatch();
+  const [selectedOptions, setSelectedOptions] = useState({});
 
   const equipmentOptions = {
     AC: `${sprite}#wind`,
@@ -14,12 +17,15 @@ export const Equipment = () => {
   };
 
   const handleOptionChange = elem => {
-    setSelectedOptions(prevSelected =>
-      prevSelected.includes(elem)
-        ? prevSelected.filter(item => item !== elem)
-        : [...prevSelected, elem]
-    );
+    setSelectedOptions(prevSelected => ({
+      ...prevSelected,
+      [elem]: !prevSelected[elem],
+    }));
   };
+
+  useEffect(() => {
+    dispatch(addEquipment(selectedOptions));
+  }, [selectedOptions, dispatch]);
 
   return (
     <div className={styles.equipmentContainer}>
@@ -30,12 +36,12 @@ export const Equipment = () => {
           <label
             key={elem}
             className={`${styles.optionBox}
-              ${selectedOptions.includes(elem) && styles.checked}`}
+              ${selectedOptions[elem] && styles.checked}`}
           >
             <input
               className={styles.сheckbox}
               type="checkbox"
-              checked={selectedOptions.includes(elem)}
+              checked={!!selectedOptions[elem]}
               onChange={() => handleOptionChange(elem)}
             />
 

@@ -3,14 +3,19 @@ import { API } from '../../helpers/axios';
 
 export const getAllCampers = createAsyncThunk(
   'campers/getAll',
-  async (page, thunkAPI) => {
+  async (filters, thunkAPI) => {
+    const newFilters = {
+      ...filters.equipment,
+    };
+    console.log(newFilters);
+
     try {
       const response = await API.get('/campers', {
         params: {
-          // client_id: 'DGBjysr0h1RikZj98OV23AQkRWTDZs5M74r2kwonZrU',
           // query: `${topic}`,
-          page,
+          page: 1,
           limit: 4,
+          ...newFilters,
         },
       });
       return response.data;

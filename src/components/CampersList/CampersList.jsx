@@ -10,12 +10,11 @@ export const CampersList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [isActive, setIsActive] = useState(true);
+  const campers = useSelector(selectCampers);
 
   useEffect(() => {
-    dispatch(getAllCampers(page));
+    dispatch(getAllCampers({ page }));
   }, [dispatch, page]);
-
-  const campers = useSelector(selectCampers);
 
   const handleLoadMore = () => {
     setPage(page + 1);

@@ -9,6 +9,10 @@ export const CamperDetails = () => {
 
   useEffect(() => {}, [camper]);
 
+  if (!camper || typeof camper.price !== 'number') {
+    return <div>Loading...</div>;
+  }
+
   const images = camper.gallery;
 
   const formattedPrice = camper.price.toLocaleString('en-EU', {

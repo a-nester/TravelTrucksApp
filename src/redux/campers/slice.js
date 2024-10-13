@@ -18,6 +18,8 @@ export const campersSlice = createSlice({
     builder
       .addCase(getAllCampers.pending, handlePending)
       .addCase(getAllCampers.fulfilled, (state, { payload }) => {
+        console.log(payload);
+
         state.isLoading = false;
         state.items.push(...payload.items);
       })
