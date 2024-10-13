@@ -10,7 +10,7 @@ export const Location = () => {
 
   const handleChange = evt => {
     setInputValue(evt.target.value);
-    dispatch(addLocation(evt.target.value));
+    dispatch(addLocation(evt.target.value.trim()));
   };
 
   return (

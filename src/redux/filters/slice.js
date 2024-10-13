@@ -4,6 +4,8 @@ const initialState = {
   location: '',
   equipment: {},
   type: '',
+  page: 1,
+  limit: 4,
 };
 
 const filtersSlice = createSlice({
@@ -22,8 +24,6 @@ const filtersSlice = createSlice({
     },
     addEquipment: {
       reducer(state, { payload }) {
-        console.log('payload', payload);
-
         state.equipment = payload;
       },
       prepare(equipment) {

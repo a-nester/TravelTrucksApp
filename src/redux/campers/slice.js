@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllCampers, getCamperById } from './operations';
+import { getAllCampers, getCamperById, getFilteredCampers } from './operations';
 
 const initialState = {
   items: [],
@@ -18,14 +18,18 @@ export const campersSlice = createSlice({
     builder
       .addCase(getAllCampers.pending, handlePending)
       .addCase(getAllCampers.fulfilled, (state, { payload }) => {
-        console.log(payload);
-
         state.isLoading = false;
         state.items.push(...payload.items);
       })
       .addCase(getCamperById.pending, handlePending)
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.itemById = payload;
+      })
+      .addCase(getFilteredCampers.fulfilled, (state, { payload }) => {
+        console.log(payload);
+
+        state.isLoading;
+        state.items = payload.items;
       });
   },
 });

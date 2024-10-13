@@ -10,17 +10,24 @@ export const Equipment = () => {
 
   const equipmentOptions = {
     AC: `${sprite}#wind`,
-    Automatic: `${sprite}#diagram`,
-    Kitchen: `${sprite}#cup-hot`,
+    transmission: `${sprite}#diagram`,
+    kitchen: `${sprite}#cup-hot`,
     TV: `${sprite}#tv`,
-    Bathroom: `${sprite}#bi_droplet`,
+    bathroom: `${sprite}#bi_droplet`,
   };
 
   const handleOptionChange = elem => {
-    setSelectedOptions(prevSelected => ({
-      ...prevSelected,
-      [elem]: !prevSelected[elem],
-    }));
+    setSelectedOptions(prevSelected => {
+      if (elem in prevSelected) {
+        const { [elem]: removed, ...rest } = prevSelected; // Якщо існує, видаляємо ключ
+        return rest; // Повертаємо об'єкт без цього ключа
+      } else {
+        return {
+          ...prevSelected,
+          [elem]: elem !== 'transmission' ? true : 'Automatic',
+        }; // Якщо не існує, додаємо його з true
+      }
+    });
   };
 
   useEffect(() => {
@@ -48,7 +55,7 @@ export const Equipment = () => {
             <svg width={32} height={32}>
               <use href={`${equipmentOptions[elem]}`} />
             </svg>
-            <p>{elem}</p>
+            <p>{elem !== 'transmission' ? elem : 'Automatic'}</p>
           </label>
         ))}
       </div>
