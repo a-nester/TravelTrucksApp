@@ -1,6 +1,9 @@
 :root {
   --Animation_cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: Inter, sans-serif;
+  --font-family: Inter, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-semi: 500;
+  --font-weight-bold: 600;
   line-height: 1.5;
   font-weight: 400;
 
@@ -42,8 +45,30 @@ a:hover {
 
 h1 {
   font-family: Inter, sans-serif;
-  font-weight: 400;
+  font-weight: var(--font-weight-bold);
+  font-size: 48px;
   line-height: 1.1;
+}
+
+h2 {
+  font-family: Inter, sans-serif;
+  font-weight: var(--font-weight-bold);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: Inter, sans-serif;
+  font-weight: var(--font-weight-bold);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+p {
+  font-family: Inter, sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 button {

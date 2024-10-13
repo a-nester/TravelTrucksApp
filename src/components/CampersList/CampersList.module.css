@@ -1,3 +1,10 @@
+.campersListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 63px;
+}
+
 .campersList {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -5,4 +12,19 @@
   gap: 32px;
   max-width: 888px;
   min-width: 320px;
+}
+
+.loadMoreButton {
+  width: 145px;
+  height: 56px;
+  background-color: var(--white);
+  border: 1px solid var(--grey-light);
+  border-radius: 200px;
+  color: var(--main-black);
+  transition: border var(--Animation_cubic);
+}
+
+.loadMoreButton:hover {
+  border: 1px solid var(--button-hover);
+  background-color: var(--white);
 }

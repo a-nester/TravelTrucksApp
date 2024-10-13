@@ -1,13 +1,9 @@
 .camperItem {
   display: flex;
   flex-direction: row;
-  gap: 24px;
   background-color: var(--white);
-  height: 368px;
   text-align: center;
-  padding: 24px;
-  border: 1px solid var(--grey-light);
-  border-radius: 20px;
+  margin-bottom: 60px;
 }
 
 .ItemImg {
@@ -33,7 +29,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 525px;
+  /* max-width: 525px; */
   height: 32px;
 }
 
@@ -62,37 +58,34 @@
   flex-direction: row;
   align-items: center;
   gap: 4px;
-
+  text-decoration: underline;
   font-size: 16px;
   font-weight: 400;
   text-align: left;
 }
 
+.photoContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+}
+
+.photoWrapper {
+  width: 292px;
+  height: 312px;
+}
+
+.thumbPhoto {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .describtion {
-  max-width: 525px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
+  margin-right: auto;
   padding: 0;
   line-height: 1.5;
-}
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.badgesItem {
-  display: inline-flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  height: 48px;
-  background-color: var(--grey-light);
-  border-radius: 100px;
-  padding: 12px 18px;
+  text-align: left;
 }
 
 .detailsButton {

@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import styles from './Location.module.css';
 import sprite from 'assets/icons/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { addLocation } from '../../redux/filters/slice';
 
 export const Location = () => {
   const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = evt => {
     setInputValue(evt.target.value);
+    dispatch(addLocation(evt.target.value));
   };
 
   return (

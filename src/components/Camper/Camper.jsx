@@ -1,9 +1,26 @@
 import { useNavigate } from 'react-router';
 import styles from './Camper.module.css';
 import sprite from 'assets/icons/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from '../../redux/favourites/slice';
+import { selectFavourites } from '../../redux/favourites/selectors';
+import { useEffect } from 'react';
+import { getCamperById } from '../../redux/campers/operations';
+import { selectCamperById } from '../../redux/campers/selectors';
 
 export const Camper = ({ element }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const favourites = useSelector(selectFavourites);
+
+  // useEffect(() => {}, [element]);
+
+  if (!element || !element.gallery || element.gallery.length === 0) {
+    return <div>Loading...</div>;
+  }
   const image = element.gallery[0].original;
   const formattedPrice = element.price.toLocaleString('en-EU', {
     style: 'currency',
@@ -22,7 +39,13 @@ export const Camper = ({ element }) => {
   };
 
   const handleClick = () => {
-    navigate(`/catalog/${element.id}`);
+    navigate(`/catalog/${element.id}/features`);
+  };
+
+  const handleFavourites = () => {
+    favourites.some(elem => elem.id === element.id)
+      ? dispatch(removeFromFavourites(element.id))
+      : dispatch(addToFavourites(element.id));
   };
 
   return (
@@ -37,9 +60,23 @@ export const Camper = ({ element }) => {
             <h2> {element.name} </h2>
             <div className={styles.priceWrapper}>
               <h2>{formattedPrice}</h2>
-              <svg width={26} height={24}>
-                <use href={`${sprite}#heart_default`} />
-              </svg>
+              <button
+                className={styles.favouriteButton}
+                type="button"
+                onClick={handleFavourites}
+              >
+                <svg
+                  className={
+                    favourites.some(elem => elem.id === element.id)
+                      ? styles.heartPressed
+                      : styles.heartDefault
+                  }
+                  width={26}
+                  height={24}
+                >
+                  <use href={`${sprite}#heart_default`} />
+                </svg>
+              </button>
             </div>
           </div>
 
