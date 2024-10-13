@@ -12,11 +12,10 @@ export const CamperPage = () => {
   const { pathname } = useLocation();
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     dispatch(getCamperById(id));
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={styles.camperContainer}>
@@ -24,11 +23,15 @@ export const CamperPage = () => {
       <ul className={styles.menu}>
         <li>
           <Link to="features">Features</Link>
-          <div className={pathname.includes('features') && styles.mark}></div>
+          <div
+            className={pathname.includes('features') ? styles.mark : ''}
+          ></div>
         </li>
         <li>
           <Link to="reviews">Review</Link>
-          <div className={pathname.includes('reviews') && styles.mark}></div>
+          <div
+            className={pathname.includes('reviews') ? styles.mark : ''}
+          ></div>
         </li>
       </ul>
       <div className={styles.devider}></div>

@@ -2,9 +2,13 @@ import { useSelector } from 'react-redux';
 import { selectCamperById } from '../../redux/campers/selectors';
 import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
+import { useEffect } from 'react';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
+
+  useEffect(() => {}, [camper]);
+
   const images = camper.gallery;
 
   const formattedPrice = camper.price.toLocaleString('en-EU', {

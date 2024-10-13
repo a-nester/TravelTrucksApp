@@ -16,7 +16,6 @@ export const CampersList = () => {
   }, [dispatch, page]);
 
   const campers = useSelector(selectCampers);
-  console.log(campers.length);
 
   const handleLoadMore = () => {
     setPage(page + 1);
