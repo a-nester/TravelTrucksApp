@@ -10,10 +10,6 @@ export const CatalogPage = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
 
-  useEffect(() => {
-    dispatch(getAllCampers());
-  }, [dispatch]);
-
   const handleClick = () => {
     console.log(campers);
   };

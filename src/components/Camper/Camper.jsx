@@ -7,12 +7,16 @@ import {
   removeFromFavourites,
 } from '../../redux/favourites/slice';
 import { selectFavourites } from '../../redux/favourites/selectors';
+import { useEffect } from 'react';
+import { getCamperById } from '../../redux/campers/operations';
+import { selectCamperById } from '../../redux/campers/selectors';
 
 export const Camper = ({ element }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const favourites = useSelector(selectFavourites);
-  console.log('favourites', favourites);
+
+  // useEffect(() => {}, [element]);
 
   if (!element || !element.gallery || element.gallery.length === 0) {
     return <div>Loading...</div>;
@@ -40,8 +44,7 @@ export const Camper = ({ element }) => {
 
   const handleFavourites = () => {
     favourites.some(elem => elem.id === element.id)
-      ? // console.log("Is")
-        dispatch(removeFromFavourites(element.id))
+      ? dispatch(removeFromFavourites(element.id))
       : dispatch(addToFavourites(element.id));
   };
 
