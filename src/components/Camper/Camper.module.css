@@ -50,6 +50,22 @@
   gap: 12px;
 }
 
+.favouriteButton {
+  background-color: inherit;
+}
+
+.favouriteButton:hover {
+  background-color: inherit;
+}
+
+.heartDefault {
+  color: var(--main-black);
+}
+
+.heartPressed {
+  color: var(--button);
+}
+
 .reviewWrapper {
   display: flex;
   flex-direction: row;

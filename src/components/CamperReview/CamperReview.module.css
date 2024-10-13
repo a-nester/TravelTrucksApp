@@ -1,0 +1,57 @@
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  width: 631px;
+  padding: 44px 0;
+
+  border-radius: 10px;
+}
+
+.bookingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 46px 44px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background-color: var(--grey-categories);
+  color: var(--button);
+}
+
+.filled {
+  color: var(--yellow);
+  fill: var(--yellow);
+}
+.empty {
+  color: var(--grey-categories);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.name {
+  font-weight: var(--font-weight-semi);
+}
+
+.rate {
+  display: flex;
+  gap: 4px;
+}

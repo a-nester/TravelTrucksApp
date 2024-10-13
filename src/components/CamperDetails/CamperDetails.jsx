@@ -1,38 +1,17 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { selectCamperById } from '../../redux/campers/selectors';
+import { useSelector } from 'react-redux';
+import { selectCamperById } from '../../redux/campers/selectors';
 import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
-// import { useParams } from 'react-router';
-// import { useEffect } from 'react';
-// import { getCamperById } from '../../redux/campers/operations';
 
-export const CamperDetails = ({ camper }) => {
-  console.log(camper);
+export const CamperDetails = () => {
+  const camper = useSelector(selectCamperById);
+  const images = camper.gallery;
 
-  // const { id } = useParams();
-  // const dispatch = useDispatch();
-  // const camper = useSelector(selectCamperById);
-
-  // useEffect(() => {
-  //   dispatch(getCamperById(id));
-  // }, [id, dispatch]);
-
-  // const image = camper.gallery[0].original;
   const formattedPrice = camper.price.toLocaleString('en-EU', {
     style: 'currency',
     currency: 'EUR',
     useGrouping: false,
   });
-
-  const camperOptions = {
-    transmission: `${sprite}#diagram`,
-    AC: `${sprite}#wind`,
-    engine: `${sprite}#fuel-pump`,
-    kitchen: `${sprite}#cup-hot`,
-    radio: `${sprite}#ui-radios`,
-    bathroom: `${sprite}#bi_droplet`,
-    TV: `${sprite}#tv`,
-  };
 
   return (
     <div className={styles.camperItem}>
@@ -41,7 +20,7 @@ export const CamperDetails = ({ camper }) => {
         {/* title box */}
         <div className={styles.itemTitleWrapper}>
           <div className={styles.itemTitle}>
-            <h2> {camper.name} </h2>
+            <h2 className={styles.title}> {camper.name} </h2>
           </div>
 
           {/* review & location */}
@@ -65,22 +44,19 @@ export const CamperDetails = ({ camper }) => {
           </div>
         </div>
 
-        <div className={styles.describtion}>{camper.description}</div>
+        <ul className={styles.photoContainer}>
+          {images.map((elem, idx) => (
+            <li className={styles.photoWrapper} key={idx}>
+              <img
+                key={idx}
+                className={styles.thumbPhoto}
+                src={`${elem.thumb}`}
+              />
+            </li>
+          ))}
+        </ul>
 
-        {/* camper options */}
-        <div className={styles.badges}>
-          {Object.keys(camperOptions).map(
-            el =>
-              camper[el] !== false && (
-                <div key={el} className={styles.badgesItem}>
-                  <svg width={20} height={20}>
-                    <use href={`${camperOptions[el]}`} />
-                  </svg>
-                  <p>{typeof camper[el] === 'boolean' ? el : camper[el]}</p>
-                </div>
-              )
-          )}
-        </div>
+        <p className={styles.describtion}>{camper.description}</p>
       </div>
     </div>
   );
