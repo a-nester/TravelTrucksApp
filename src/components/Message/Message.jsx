@@ -14,6 +14,7 @@ export const Message = () => {
           className: '',
           duration: 5000,
           style: {
+            maxWidth: '600px',
             background: '#363636',
             color: '#fff',
           },
