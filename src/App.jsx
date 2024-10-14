@@ -24,8 +24,7 @@ function App() {
               <Route path="features" element={<CamperFeatures />} />
               <Route path="reviews" element={<CamperReview />} />
             </Route>
-
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Suspense>
       </Layout>
