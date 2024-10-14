@@ -7,9 +7,7 @@ import {
   removeFromFavourites,
 } from '../../redux/favourites/slice';
 import { selectFavourites } from '../../redux/favourites/selectors';
-import { useEffect } from 'react';
-import { getCamperById } from '../../redux/campers/operations';
-import { selectCamperById } from '../../redux/campers/selectors';
+import Loader from '../Loader/Loader';
 
 export const Camper = ({ element }) => {
   const dispatch = useDispatch();
@@ -17,7 +15,7 @@ export const Camper = ({ element }) => {
   const favourites = useSelector(selectFavourites);
 
   if (!element || !element.gallery || element.gallery.length === 0) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   const image = element.gallery[0].original;
   const formattedPrice = element.price.toLocaleString('en-EU', {
