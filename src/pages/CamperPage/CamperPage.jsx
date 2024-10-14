@@ -15,7 +15,7 @@ export const CamperPage = () => {
 
   useEffect(() => {
     dispatch(getCamperById(id));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.camperContainer}>

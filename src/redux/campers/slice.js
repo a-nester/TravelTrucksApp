@@ -3,7 +3,7 @@ import { getAllCampers, getCamperById, getFilteredCampers } from './operations';
 import toast from 'react-hot-toast';
 import { MESSAGES } from '../../constants/constants';
 
-const { SUCCESS, ERROR } = MESSAGES;
+const { ERROR } = MESSAGES;
 
 const initialState = {
   items: [],
@@ -15,10 +15,6 @@ const handlePending = state => {
   state.isLoading = true;
 };
 
-const handleSuccess = message => {
-  toast.success(message);
-};
-
 const handleError = message => {
   toast.error(message);
 };
@@ -26,6 +22,11 @@ const handleError = message => {
 export const campersSlice = createSlice({
   name: 'campers',
   initialState,
+  reducers: {
+    clearCampers: state => {
+      state.items = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getAllCampers.pending, handlePending)
@@ -47,7 +48,7 @@ export const campersSlice = createSlice({
       })
       .addCase(getFilteredCampers.pending, handlePending)
       .addCase(getFilteredCampers.fulfilled, (state, { payload }) => {
-        state.isLoading;
+        state.isLoading = false;
         state.items = payload.items;
       })
       .addCase(getFilteredCampers.rejected, state => {
@@ -58,3 +59,4 @@ export const campersSlice = createSlice({
 });
 
 export const campersReducer = campersSlice.reducer;
+export const clearCampers = campersSlice.actions;

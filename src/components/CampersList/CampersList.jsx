@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCampers } from '../../redux/campers/selectors';
+import { selectCampers, selectIsLoading } from '../../redux/campers/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import Camper from '../Camper/Camper';
 import styles from './CampersList.module.css';
 import { useEffect, useState } from 'react';
 import { getAllCampers } from '../../redux/campers/operations';
 import { selectFilters } from '../../redux/filters/selectors';
+import Loader from '../Loader/Loader';
 
 export const CampersList = () => {
   const dispatch = useDispatch();
@@ -13,23 +14,21 @@ export const CampersList = () => {
   const [isActive, setIsActive] = useState(true);
   const campers = useSelector(selectCampers);
   const filters = useSelector(selectFilters);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(
-      getAllCampers({
-        ...filters,
-        page,
-      })
-    );
+    if (!campers.length) {
+      dispatch(getAllCampers({ ...filters, page }));
+    }
 
     if (campers.length / 4 < page) {
       setIsActive(false);
     }
-  }, [page]);
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     setPage(page + 1);
-    console.log(page);
+    dispatch(getAllCampers({ ...filters, page }));
   };
 
   return (
@@ -41,7 +40,7 @@ export const CampersList = () => {
             ))
           : 'no campers'}
       </ul>
-
+      {isLoading && <Loader />}
       {isActive && (
         <button
           className={styles.loadMoreButton}

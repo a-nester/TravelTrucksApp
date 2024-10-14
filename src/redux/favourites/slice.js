@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import { MESSAGES } from '../../constants/constants';
 
-const { SUCCESS, ERROR } = MESSAGES;
+const { SUCCESS } = MESSAGES;
 
 const initialState = {
   list: [],

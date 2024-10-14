@@ -11,7 +11,7 @@ export const CatalogPage = () => {
 
   return (
     <div className={styles.catalog}>
-      {campers && <Filters />}
+      <Filters />
       {campers && <CampersList />}
     </div>
   );
