@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './Equipment.module.css';
 import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { addEquipment } from '../../redux/filters/slice';
+import { addEquipment } from '../../../redux/filters/slice';
 
 export const Equipment = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export const Equipment = () => {
         return {
           ...prevSelected,
           [elem]: elem !== 'transmission' ? true : 'Automatic',
-        }; // Якщо не існує, додаємо його з true
+        }; // Якщо не існує, додаємо його з true (+ виключення для коробки передач)
       }
     });
   };

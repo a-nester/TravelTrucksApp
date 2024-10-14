@@ -5,16 +5,23 @@ import Camper from '../Camper/Camper';
 import styles from './CampersList.module.css';
 import { useEffect, useState } from 'react';
 import { getAllCampers } from '../../redux/campers/operations';
+import { selectFilters } from '../../redux/filters/selectors';
 
 export const CampersList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [isActive, setIsActive] = useState(true);
   const campers = useSelector(selectCampers);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    dispatch(getAllCampers({ page }));
-  }, [dispatch, page]);
+    dispatch(
+      getAllCampers({
+        ...filters,
+        ...page,
+      })
+    );
+  }, [dispatch, page, filters]);
 
   const handleLoadMore = () => {
     setPage(page + 1);

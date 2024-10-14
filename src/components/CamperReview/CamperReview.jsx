@@ -5,7 +5,6 @@ import { selectCamperById } from '../../redux/campers/selectors';
 
 export const CamperReview = () => {
   const camper = useSelector(selectCamperById);
-  console.log('rate', camper);
 
   return (
     <div className={styles.reviewContainer}>

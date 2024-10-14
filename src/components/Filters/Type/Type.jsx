@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import styles from './TypeFilter.module.css';
+import styles from './Type.module.css';
 import sprite from 'assets/icons/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { addType } from '../../../redux/filters/slice';
 
-export const TypeFilter = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+export const Type = () => {
+  const [selectedOptions, setSelectedOptions] = useState('');
+  const dispatch = useDispatch();
 
   const typeOptions = {
     Van: `${sprite}#bi_grid-1x2`,
@@ -12,11 +15,10 @@ export const TypeFilter = () => {
   };
 
   const handleOptionChange = elem => {
-    setSelectedOptions(prevSelected =>
-      prevSelected.includes(elem)
-        ? prevSelected.filter(item => item !== elem)
-        : [...prevSelected, elem]
-    );
+    const type = elem.toLocaleLowerCase();
+
+    setSelectedOptions(elem);
+    dispatch(addType(type));
   };
 
   return (
@@ -28,12 +30,13 @@ export const TypeFilter = () => {
           <label
             key={elem}
             className={`${styles.optionBox}
-              ${selectedOptions.includes(elem) && styles.checked}`}
+              ${selectedOptions === elem && styles.checked}`}
           >
             <input
               className={styles.сheckbox}
-              type="checkbox"
-              checked={selectedOptions.includes(elem)}
+              type="radio"
+              value={elem}
+              checked={selectedOptions === elem}
               onChange={() => handleOptionChange(elem)}
             />
 
@@ -48,4 +51,4 @@ export const TypeFilter = () => {
   );
 };
 
-export default TypeFilter;
+export default Type;
