@@ -41,6 +41,7 @@ export const CampersList = () => {
             ))
           : 'no campers'}
       </ul>
+
       {isActive && (
         <button
           className={styles.loadMoreButton}

@@ -47,13 +47,7 @@
   width: 527px;
   height: 60px;
   font-size: 16px;
-  /* z-index: 1; */
 }
-/* .calendar:hover,
-.calendar:focus,
-.calendar:active {
-  background-color: var(--grey-input);
-} */
 
 .textarea {
   width: 100%;
