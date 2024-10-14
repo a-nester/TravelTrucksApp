@@ -4,7 +4,8 @@ import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
 import { useEffect, useState } from 'react';
 import { formatEU } from '../../helpers/format';
-import Modal from './Modal/Modal';
+import Modal from '../Modal/Modal';
+import Loader from '../Loader/Loader';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
@@ -14,7 +15,7 @@ export const CamperDetails = () => {
   useEffect(() => {}, [camper]);
 
   if (!camper || typeof camper.price !== 'number') {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const images = camper.gallery;
