@@ -16,8 +16,6 @@ export const Camper = ({ element }) => {
   const navigate = useNavigate();
   const favourites = useSelector(selectFavourites);
 
-  // useEffect(() => {}, [element]);
-
   if (!element || !element.gallery || element.gallery.length === 0) {
     return <div>Loading...</div>;
   }

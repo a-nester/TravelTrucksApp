@@ -3,6 +3,7 @@ import { selectCamperById } from '../../redux/campers/selectors';
 import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
 import { useEffect } from 'react';
+import { formatEU } from '../../helpers/format';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
@@ -15,11 +16,7 @@ export const CamperDetails = () => {
 
   const images = camper.gallery;
 
-  const formattedPrice = camper.price.toLocaleString('en-EU', {
-    style: 'currency',
-    currency: 'EUR',
-    useGrouping: false,
-  });
+  const formattedPrice = formatEU(camper.price);
 
   return (
     <div className={styles.camperItem}>

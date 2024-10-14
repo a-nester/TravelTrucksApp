@@ -2,14 +2,14 @@ import { useSelector } from 'react-redux';
 import styles from './CamperReview.module.css';
 import sprite from 'assets/icons/sprite.svg';
 import { selectCamperById } from '../../redux/campers/selectors';
+import BookingForm from '../BookingForm/BookingForm';
 
 export const CamperReview = () => {
   const camper = useSelector(selectCamperById);
-  console.log('rate', camper);
 
   return (
     <div className={styles.reviewContainer}>
-      <ul className={styles.reviewContainer}>
+      <ul className={styles.reviewlist}>
         {camper.reviews.map((elem, idndex) => (
           <li className={styles.review} key={idndex}>
             <div className={styles.wrapper}>
@@ -41,7 +41,8 @@ export const CamperReview = () => {
           </li>
         ))}
       </ul>
-      <div className={styles.bookingContainer}></div>
+      {/* <div className={styles.bookingContainer}></div> */}
+      <BookingForm />
     </div>
   );
 };

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from './Equipment.module.css';
 import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { addEquipment } from '../../redux/filters/slice';
+import { addEquipment } from '../../../redux/filters/slice';
+import { capitalizeFirstLetter } from '../../../helpers/format';
 
 export const Equipment = () => {
   const dispatch = useDispatch();
@@ -10,17 +11,24 @@ export const Equipment = () => {
 
   const equipmentOptions = {
     AC: `${sprite}#wind`,
-    Automatic: `${sprite}#diagram`,
-    Kitchen: `${sprite}#cup-hot`,
+    transmission: `${sprite}#diagram`,
+    kitchen: `${sprite}#cup-hot`,
     TV: `${sprite}#tv`,
-    Bathroom: `${sprite}#bi_droplet`,
+    bathroom: `${sprite}#bi_droplet`,
   };
 
   const handleOptionChange = elem => {
-    setSelectedOptions(prevSelected => ({
-      ...prevSelected,
-      [elem]: !prevSelected[elem],
-    }));
+    setSelectedOptions(prevSelected => {
+      if (elem in prevSelected) {
+        const { [elem]: removed, ...rest } = prevSelected; // якщо існує, видаляємо ключ
+        return rest; // повертаємо об'єкт без цього ключа
+      } else {
+        return {
+          ...prevSelected,
+          [elem]: elem !== 'transmission' ? true : 'Automatic',
+        }; // якщо не існує, додаємо його з true (+ виключення для коробки передач)
+      }
+    });
   };
 
   useEffect(() => {
@@ -48,7 +56,11 @@ export const Equipment = () => {
             <svg width={32} height={32}>
               <use href={`${equipmentOptions[elem]}`} />
             </svg>
-            <p>{elem}</p>
+            <p>
+              {elem !== 'transmission'
+                ? capitalizeFirstLetter(elem)
+                : 'Automatic'}
+            </p>
           </label>
         ))}
       </div>

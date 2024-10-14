@@ -1,18 +1,14 @@
 .reviewContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 44px;
-  width: 631px;
+  width: 100%;
   padding: 44px 0;
 
   border-radius: 10px;
 }
-
-.bookingContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 46px 44px;
+.reviewList {
+  width: 100%;
 }
 
 .review {

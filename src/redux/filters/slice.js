@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   location: '',
   equipment: {},
-  type: '',
+  form: '',
+  page: 1,
+  limit: 4,
 };
 
 const filtersSlice = createSlice({
@@ -22,8 +24,6 @@ const filtersSlice = createSlice({
     },
     addEquipment: {
       reducer(state, { payload }) {
-        console.log('payload', payload);
-
         state.equipment = payload;
       },
       prepare(equipment) {
@@ -32,8 +32,18 @@ const filtersSlice = createSlice({
         };
       },
     },
+    addType: {
+      reducer(state, { payload }) {
+        state.form = payload.form;
+      },
+      prepare(type) {
+        return {
+          payload: { form: type },
+        };
+      },
+    },
   },
 });
 
-export const { addLocation, addEquipment } = filtersSlice.actions;
+export const { addLocation, addEquipment, addType } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
