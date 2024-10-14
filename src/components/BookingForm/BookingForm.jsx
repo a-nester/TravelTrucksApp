@@ -11,7 +11,6 @@ import { selectCamperById } from '../../redux/campers/selectors';
 
 export const BookingForm = () => {
   const camper = useSelector(selectCamperById);
-  console.log(camper);
 
   const [filledName, setFilledName] = useState(false);
   const [filledEmail, setFilledEmail] = useState(false);

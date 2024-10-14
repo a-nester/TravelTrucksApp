@@ -2,11 +2,14 @@ import { useSelector } from 'react-redux';
 import { selectCamperById } from '../../redux/campers/selectors';
 import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { formatEU } from '../../helpers/format';
+import Modal from './Modal/Modal';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
 
   useEffect(() => {}, [camper]);
 
@@ -15,8 +18,16 @@ export const CamperDetails = () => {
   }
 
   const images = camper.gallery;
-
   const formattedPrice = formatEU(camper.price);
+
+  const handleImageClick = src => {
+    setSelectedImage(src);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className={styles.camperItem}>
@@ -56,11 +67,16 @@ export const CamperDetails = () => {
                 key={idx}
                 className={styles.thumbPhoto}
                 src={`${elem.thumb}`}
+                onClick={() => handleImageClick(elem.original)}
               />
             </li>
           ))}
         </ul>
-
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          imageSrc={selectedImage}
+        />
         <p className={styles.describtion}>{camper.description}</p>
       </div>
     </div>

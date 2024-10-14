@@ -1,4 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
+import { MESSAGES } from '../../constants/constants';
+
+const { SUCCESS, ERROR } = MESSAGES;
 
 const initialState = {
   list: [],
@@ -11,6 +15,7 @@ const favouritesSlice = createSlice({
     addToFavourites: {
       reducer(state, { payload }) {
         state.list.push(payload);
+        toast.success(SUCCESS.ADD_FAVOURITES);
       },
       prepare(id) {
         return {
@@ -22,6 +27,7 @@ const favouritesSlice = createSlice({
     },
     removeFromFavourites(state, { payload }) {
       state.list = state.list.filter(el => el.id !== payload);
+      toast.success(SUCCESS.REMOVE_FAVOURITES);
     },
   },
 });

@@ -4,8 +4,6 @@ import { API } from '../../helpers/axios';
 export const getAllCampers = createAsyncThunk(
   'campers/getAll',
   async (filters, thunkAPI) => {
-    console.log(filters);
-
     try {
       const response = await API.get('/campers', {
         params: {
