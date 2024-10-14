@@ -15,7 +15,10 @@ export const Type = () => {
   };
 
   const handleOptionChange = elem => {
-    const type = elem.toLocaleLowerCase();
+    const type =
+      (elem === 'Van' && 'panelTruck') ||
+      (elem === 'Fully_Integrated' && 'fullyIntegrated') ||
+      (elem === 'Alcov' && 'alcov');
 
     setSelectedOptions(elem);
     dispatch(addType(type));

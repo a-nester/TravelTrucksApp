@@ -18,17 +18,20 @@ export const CampersList = () => {
     dispatch(
       getAllCampers({
         ...filters,
-        ...page,
+        page,
       })
     );
-  }, [dispatch, page, filters]);
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
     if (campers.length / 4 < page) {
       setIsActive(false);
     }
+  }, [page]);
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+    console.log(page);
   };
+
   return (
     <div className={styles.campersListContainer}>
       <ul className={styles.campersList}>

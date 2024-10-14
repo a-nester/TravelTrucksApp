@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './CamperFeatures.module.css';
 import sprite from 'assets/icons/sprite.svg';
 import { selectCamperById } from '../../redux/campers/selectors';
+import BookingForm from '../BookingForm/BookingForm';
 
 export const CamperFeatures = () => {
   const camper = useSelector(selectCamperById);
@@ -56,7 +57,7 @@ export const CamperFeatures = () => {
           </ul>
         </div>
       </div>
-      <div className={styles.bookingContainer}></div>
+      <BookingForm />
     </div>
   );
 };

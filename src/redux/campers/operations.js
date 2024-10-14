@@ -4,17 +4,14 @@ import { API } from '../../helpers/axios';
 export const getAllCampers = createAsyncThunk(
   'campers/getAll',
   async (filters, thunkAPI) => {
-    const newFilters = {
-      ...filters,
-      ...filters.equipment,
-    };
+    console.log(filters);
 
     try {
       const response = await API.get('/campers', {
         params: {
           page: 1,
           limit: 4,
-          ...newFilters,
+          ...filters,
         },
       });
       return response.data;
@@ -41,12 +38,8 @@ export const getFilteredCampers = createAsyncThunk(
   'campers/getFiltered',
   async (filters, thunkAPI) => {
     try {
-      console.log(filters);
-
       const response = await API.get('/campers', {
         params: {
-          // location: 'kyiv',
-          // query: `${topic}`,
           page: 1,
           limit: 4,
           ...filters,

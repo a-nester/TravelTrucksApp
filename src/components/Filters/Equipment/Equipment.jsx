@@ -3,6 +3,7 @@ import styles from './Equipment.module.css';
 import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addEquipment } from '../../../redux/filters/slice';
+import { capitalizeFirstLetter } from '../../../helpers/format';
 
 export const Equipment = () => {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ export const Equipment = () => {
   const handleOptionChange = elem => {
     setSelectedOptions(prevSelected => {
       if (elem in prevSelected) {
-        const { [elem]: removed, ...rest } = prevSelected; // Якщо існує, видаляємо ключ
-        return rest; // Повертаємо об'єкт без цього ключа
+        const { [elem]: removed, ...rest } = prevSelected; // якщо існує, видаляємо ключ
+        return rest; // повертаємо об'єкт без цього ключа
       } else {
         return {
           ...prevSelected,
           [elem]: elem !== 'transmission' ? true : 'Automatic',
-        }; // Якщо не існує, додаємо його з true (+ виключення для коробки передач)
+        }; // якщо не існує, додаємо його з true (+ виключення для коробки передач)
       }
     });
   };
@@ -55,7 +56,11 @@ export const Equipment = () => {
             <svg width={32} height={32}>
               <use href={`${equipmentOptions[elem]}`} />
             </svg>
-            <p>{elem !== 'transmission' ? elem : 'Automatic'}</p>
+            <p>
+              {elem !== 'transmission'
+                ? capitalizeFirstLetter(elem)
+                : 'Automatic'}
+            </p>
           </label>
         ))}
       </div>
