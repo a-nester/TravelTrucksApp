@@ -4,7 +4,7 @@ import css from './Loader.module.css';
 export const Loader = () => {
   return (
     <>
-      <SyncLoader className={css.loader} color="#1734f6" />
+      <SyncLoader className={css.loader} color="#e44848" />
     </>
   );
 };
