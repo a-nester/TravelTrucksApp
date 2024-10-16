@@ -45,7 +45,9 @@ export const getFilteredCampers = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      const message = error.response?.data?.message || error.message;
+      const statusCode = error.response?.status;
+      return thunkAPI.rejectWithValue({ message, statusCode });
     }
   }
 );

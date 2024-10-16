@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import styles from './CamperReview.module.css';
-import sprite from 'assets/icons/sprite.svg';
 import { selectCamperById } from '../../redux/campers/selectors';
 import BookingForm from '../BookingForm/BookingForm';
+import { CommonSvg } from '../CommonSvg/CommonSvg';
 
 export const CamperReview = () => {
   const camper = useSelector(selectCamperById);
@@ -21,17 +21,16 @@ export const CamperReview = () => {
                 <ul className={styles.rate}>
                   {[...Array(5)].map((_, idx) => (
                     <li key={idx}>
-                      <svg
+                      <CommonSvg
                         width={16}
                         height={16}
+                        iconId={'star_default'}
                         className={
                           idx < elem.reviewer_rating
                             ? styles.filled
                             : styles.empty
                         }
-                      >
-                        <use href={`${sprite}#star_default`} />
-                      </svg>
+                      />
                     </li>
                   ))}
                 </ul>
@@ -41,7 +40,6 @@ export const CamperReview = () => {
           </li>
         ))}
       </ul>
-      {/* <div className={styles.bookingContainer}></div> */}
       <BookingForm />
     </div>
   );

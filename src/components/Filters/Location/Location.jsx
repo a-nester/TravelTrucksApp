@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './Location.module.css';
-import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addLocation } from '../../../redux/filters/slice';
+import { CommonSvg } from '../../CommonSvg/CommonSvg';
 
 export const Location = () => {
   const [inputValue, setInputValue] = useState('');
@@ -24,13 +24,12 @@ export const Location = () => {
           onChange={handleChange}
           placeholder="city"
         />
-        <svg
-          className={inputValue ? styles.iconFilled : styles.icon}
+        <CommonSvg
           width={20}
           height={20}
-        >
-          <use href={`${sprite}#map`} />
-        </svg>
+          iconId={'map'}
+          className={inputValue ? styles.iconFilled : styles.icon}
+        />
       </form>
     </div>
   );
