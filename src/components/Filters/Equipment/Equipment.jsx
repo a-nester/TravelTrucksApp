@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
 import styles from './Equipment.module.css';
-import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addEquipment } from '../../../redux/filters/slice';
 import { capitalizeFirstLetter } from '../../../helpers/format';
+import { CommonSvg } from '../../CommonSvg/CommonSvg';
 
 export const Equipment = () => {
   const dispatch = useDispatch();
   const [selectedOptions, setSelectedOptions] = useState({});
 
   const equipmentOptions = {
-    AC: `${sprite}#wind`,
-    transmission: `${sprite}#diagram`,
-    kitchen: `${sprite}#cup-hot`,
-    TV: `${sprite}#tv`,
-    bathroom: `${sprite}#bi_droplet`,
+    AC: 'wind',
+    transmission: 'diagram',
+    kitchen: 'cup-hot',
+    TV: 'tv',
+    bathroom: 'bi_droplet',
   };
 
   const handleOptionChange = elem => {
@@ -52,10 +52,7 @@ export const Equipment = () => {
               checked={!!selectedOptions[elem]}
               onChange={() => handleOptionChange(elem)}
             />
-
-            <svg width={32} height={32}>
-              <use href={`${equipmentOptions[elem]}`} />
-            </svg>
+            <CommonSvg width={32} height={32} iconId={equipmentOptions[elem]} />
             <p>
               {elem !== 'transmission'
                 ? capitalizeFirstLetter(elem)

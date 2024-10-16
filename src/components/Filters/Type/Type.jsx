@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import styles from './Type.module.css';
-import sprite from 'assets/icons/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addType } from '../../../redux/filters/slice';
+import { CommonSvg } from '../../CommonSvg/CommonSvg';
 
 export const Type = () => {
   const [selectedOptions, setSelectedOptions] = useState('');
   const dispatch = useDispatch();
 
   const typeOptions = {
-    Van: `${sprite}#bi_grid-1x2`,
-    Fully_Integrated: `${sprite}#bi_grid`,
-    Alcov: `${sprite}#bi_grid-3x3-gap`,
+    Van: 'bi_grid-1x2',
+    Fully_Integrated: 'bi_grid',
+    Alcov: 'bi_grid-3x3-gap',
   };
 
   const handleOptionChange = elem => {
@@ -42,10 +42,7 @@ export const Type = () => {
               checked={selectedOptions === elem}
               onChange={() => handleOptionChange(elem)}
             />
-
-            <svg width={32} height={32}>
-              <use href={`${typeOptions[elem]}`} />
-            </svg>
+            <CommonSvg width={32} height={32} iconId={`${typeOptions[elem]}`} />
             <p className={styles.text}>{elem.replace(/_/g, ' ')}</p>
           </label>
         ))}

@@ -6,9 +6,8 @@
 }
 
 .campersList {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 32px;
   max-width: 888px;
   min-width: 320px;

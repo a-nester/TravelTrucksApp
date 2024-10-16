@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router';
 import styles from './Camper.module.css';
-import sprite from 'assets/icons/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToFavourites,
@@ -8,6 +7,7 @@ import {
 } from '../../redux/favourites/slice';
 import { selectFavourites } from '../../redux/favourites/selectors';
 import Loader from '../Loader/Loader';
+import { CommonSvg } from '../CommonSvg/CommonSvg';
 
 export const Camper = ({ element }) => {
   const dispatch = useDispatch();
@@ -25,13 +25,13 @@ export const Camper = ({ element }) => {
   });
 
   const camperOptions = {
-    transmission: `${sprite}#diagram`,
-    AC: `${sprite}#wind`,
-    engine: `${sprite}#fuel-pump`,
-    kitchen: `${sprite}#cup-hot`,
-    radio: `${sprite}#ui-radios`,
-    bathroom: `${sprite}#bi_droplet`,
-    TV: `${sprite}#tv`,
+    transmission: 'diagram',
+    AC: 'wind',
+    engine: 'fuel-pump',
+    kitchen: 'cup-hot',
+    radio: 'ui-radios',
+    bathroom: 'bi_droplet',
+    TV: 'tv',
   };
 
   const handleClick = () => {
@@ -61,17 +61,16 @@ export const Camper = ({ element }) => {
                 type="button"
                 onClick={handleFavourites}
               >
-                <svg
+                <CommonSvg
+                  width={26}
+                  height={26}
+                  iconId={'heart_default'}
                   className={
                     favourites.some(elem => elem.id === element.id)
                       ? styles.heartPressed
                       : styles.heartDefault
                   }
-                  width={26}
-                  height={24}
-                >
-                  <use href={`${sprite}#heart_default`} />
-                </svg>
+                />
               </button>
             </div>
           </div>
@@ -79,15 +78,11 @@ export const Camper = ({ element }) => {
           {/* review & location */}
           <div className={styles.reviewWrapper}>
             <div className={styles.review}>
-              <svg width={24} height={24}>
-                <use href={`${sprite}#star_pressed`} />
-              </svg>
+              <CommonSvg width={16} height={16} iconId={'star_pressed'} />
               <p>{`${element.rating} (${element.reviews.length} Reviews)`}</p>
             </div>
             <div className={styles.location}>
-              <svg width={16} height={16}>
-                <use href={`${sprite}#map`} />
-              </svg>
+              <CommonSvg width={16} height={16} iconId={'map'} />
               {element.location}
             </div>
           </div>
@@ -96,19 +91,21 @@ export const Camper = ({ element }) => {
         <div className={styles.describtion}>{element.description}</div>
 
         {/* camper options */}
-        <div className={styles.badges}>
+        <ul className={styles.badges}>
           {Object.keys(camperOptions).map(
             el =>
               element[el] !== false && (
-                <div key={el} className={styles.badgesItem}>
-                  <svg width={20} height={20}>
-                    <use href={`${camperOptions[el]}`} />
-                  </svg>
+                <li key={el} className={styles.badgesItem}>
+                  <CommonSvg
+                    width={20}
+                    height={20}
+                    iconId={`${camperOptions[el]}`}
+                  />
                   <p>{typeof element[el] === 'boolean' ? el : element[el]}</p>
-                </div>
+                </li>
               )
           )}
-        </div>
+        </ul>
         {/* Details button */}
         <button className={styles.detailsButton} onClick={handleClick}>
           Show more

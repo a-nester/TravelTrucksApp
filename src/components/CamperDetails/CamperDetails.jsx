@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { selectCamperById } from '../../redux/campers/selectors';
-import sprite from 'assets/icons/sprite.svg';
 import styles from './CamperDetails.module.css';
 import { useEffect, useState } from 'react';
 import { formatEU } from '../../helpers/format';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
+import { CommonSvg } from '../CommonSvg/CommonSvg';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
@@ -43,15 +43,11 @@ export const CamperDetails = () => {
           {/* review & location */}
           <div className={styles.reviewWrapper}>
             <div className={styles.review}>
-              <svg width={24} height={24}>
-                <use href={`${sprite}#star_pressed`} />
-              </svg>
+              <CommonSvg width={16} height={16} iconId={'star_pressed'} />
               <p>{`${camper.rating} (${camper.reviews.length} Reviews)`}</p>
             </div>
             <div className={styles.location}>
-              <svg width={16} height={16}>
-                <use href={`${sprite}#map`} />
-              </svg>
+              <CommonSvg width={16} height={16} iconId={'map'} />
               {camper.location}
             </div>
           </div>

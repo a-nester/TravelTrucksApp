@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllCampers, getCamperById, getFilteredCampers } from './operations';
-import toast from 'react-hot-toast';
 import { MESSAGES } from '../../constants/constants';
+import { errorHandler } from '../../helpers/errorHandler';
 
 const { ERROR } = MESSAGES;
 
@@ -16,7 +16,7 @@ const handlePending = state => {
 };
 
 const handleError = message => {
-  toast.error(message);
+  errorHandler(message);
 };
 
 export const campersSlice = createSlice({
@@ -34,26 +34,27 @@ export const campersSlice = createSlice({
         state.isLoading = false;
         state.items.push(...payload.items);
       })
-      .addCase(getAllCampers.rejected, state => {
+      .addCase(getAllCampers.rejected, (state, payload) => {
         state.isLoading = false;
-        handleError(ERROR.SERVER_ERROR);
+        handleError(payload || ERROR.SERVER_ERROR);
       })
       .addCase(getCamperById.pending, handlePending)
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.itemById = payload;
       })
-      .addCase(getCamperById.rejected, state => {
+      .addCase(getCamperById.rejected, (state, { payload }) => {
         state.isLoading = false;
-        handleError(ERROR.SERVER_ERROR);
+        handleError(payload || ERROR.SERVER_ERROR);
       })
       .addCase(getFilteredCampers.pending, handlePending)
       .addCase(getFilteredCampers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.items = payload.items;
+        state.items = payload.items || null;
       })
-      .addCase(getFilteredCampers.rejected, state => {
+      .addCase(getFilteredCampers.rejected, (state, action) => {
         state.isLoading = false;
-        handleError(ERROR.SERVER_ERROR);
+        handleError(action.payload || ERROR.SERVER_ERROR);
       });
   },
 });
