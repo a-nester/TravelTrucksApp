@@ -1,26 +1,64 @@
 .camperItem {
   display: flex;
-  flex-direction: row;
-  gap: 24px;
+  flex-direction: column;
+  gap: 12px;
   background-color: var(--white);
-  height: 368px;
+  /* height: 368px; */
   text-align: center;
-  padding: 24px;
+  padding: 12px;
   border: 1px solid var(--grey-light);
   border-radius: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .camperItem {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .camperItem {
+    flex-direction: row;
+
+    padding: 24px;
+    gap: 24px;
+  }
+}
+
 .ItemImg {
-  width: 292px;
-  height: 100%;
+  /* display: none; */
   object-fit: cover;
   border-radius: 14px;
+}
+@media only screen and (min-width: 768px) {
+  .ItemImg {
+    float: left;
+    display: inline;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .ItemImg {
+    width: 292px;
+    height: 100%;
+  }
 }
 
 .itemDetais {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .itemDetais {
+    gap: 24px;
+  }
 }
 
 .itemTitleWrapper {
@@ -52,6 +90,13 @@
 
 .favouriteButton {
   background-color: inherit;
+  padding: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favouriteButton {
+    padding: 12px;
+  }
 }
 
 .favouriteButton:hover {
@@ -85,8 +130,9 @@
 }
 
 .describtion {
-  max-width: 525px;
+  width: 100%;
   white-space: nowrap;
+
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
@@ -94,10 +140,22 @@
   line-height: 1.5;
 }
 
+@media only screen and (min-width: 768px) {
+  .describtion {
+    max-width: 525px;
+  }
+}
+
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+  .badges {
+    gap: 8px;
+  }
 }
 
 .badgesItem {

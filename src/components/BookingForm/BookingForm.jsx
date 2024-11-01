@@ -122,7 +122,8 @@ export const BookingForm = () => {
             <DatePicker
               id={idCalendar}
               name="date"
-              className={styles.calendar}
+              wrapperClassName={styles.field}
+              calendarClassName={styles.calendar}
               selected={startDate}
               shouldCloseOnSelect={true}
               onChange={handleDateChange}

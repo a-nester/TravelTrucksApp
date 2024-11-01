@@ -1,17 +1,31 @@
 .reviewContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 44px;
   width: 100%;
   padding: 44px 0;
-
   border-radius: 10px;
+  align-items: center;
 }
+
+@media only screen and (min-width: 1440px) {
+  .reviewContainer {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
 .reviewlist {
   display: flex;
   flex-direction: column;
   gap: 44px;
-  width: 631px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .reviewlist {
+    width: 631px;
+  }
 }
 
 .review {
