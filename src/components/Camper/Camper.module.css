@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 12px;
   background-color: var(--white);
-  /* height: 368px; */
   text-align: center;
   padding: 12px;
   border: 1px solid var(--grey-light);
@@ -19,14 +18,12 @@
 @media only screen and (min-width: 1440px) {
   .camperItem {
     flex-direction: row;
-
     padding: 24px;
     gap: 24px;
   }
 }
 
 .ItemImg {
-  /* display: none; */
   object-fit: cover;
   border-radius: 14px;
 }
@@ -35,7 +32,7 @@
     float: left;
     display: inline;
     width: 200px;
-    height: 200px;
+    height: auto;
     object-fit: cover;
     border-radius: 14px;
   }
@@ -44,7 +41,7 @@
 @media only screen and (min-width: 1440px) {
   .ItemImg {
     width: 292px;
-    height: 100%;
+    height: auto;
   }
 }
 
