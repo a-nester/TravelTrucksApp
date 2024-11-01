@@ -1,8 +1,16 @@
 .catalog {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 24px;
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  padding: 48px 64px 52px 64px;
+  padding: 24px 6px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .catalog {
+    flex-direction: row;
+    padding: 48px 64px 52px 64px;
+  }
 }

@@ -1,8 +1,15 @@
 .featuresContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 40px;
   padding-top: 44px;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1440px) {
+  .featuresContainer {
+    flex-direction: row;
+  }
 }
 
 .detailsContainer {
@@ -13,6 +20,12 @@
   padding: 44px 52px;
   background-color: var(--grey-input);
   border-radius: 10px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .detailsContainer {
+    width: 100%;
+  }
 }
 
 .bookingContainer {

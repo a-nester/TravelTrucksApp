@@ -2,7 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  width: 360px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fitersContainer {
+    flex-direction: column;
+    width: 360px;
+  }
 }
 
 .filtersTitle {
