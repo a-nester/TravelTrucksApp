@@ -32,7 +32,7 @@ export const CampersList = () => {
   };
 
   return (
-    <div className={styles.campersListContainer}>
+    <section className={styles.campersListContainer}>
       <ul className={styles.campersList}>
         {campers
           ? campers.map(camper => (
@@ -50,7 +50,7 @@ export const CampersList = () => {
           Load more
         </button>
       )}
-    </div>
+    </section>
   );
 };
 export default CampersList;

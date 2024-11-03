@@ -8,7 +8,7 @@ export const CamperReview = () => {
   const camper = useSelector(selectCamperById);
 
   return (
-    <div className={styles.reviewContainer}>
+    <section className={styles.reviewContainer}>
       <ul className={styles.reviewlist}>
         {camper.reviews.map((elem, idndex) => (
           <li className={styles.review} key={idndex}>
@@ -41,7 +41,7 @@ export const CamperReview = () => {
         ))}
       </ul>
       <BookingForm />
-    </div>
+    </section>
   );
 };
 

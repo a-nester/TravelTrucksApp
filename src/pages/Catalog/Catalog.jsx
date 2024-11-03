@@ -10,10 +10,10 @@ export const CatalogPage = () => {
   const campers = useSelector(selectCampers);
 
   return (
-    <div className={styles.catalog}>
+    <section className={styles.catalog}>
       <Filters />
       {campers && <CampersList />}
-    </div>
+    </section>
   );
 };
 

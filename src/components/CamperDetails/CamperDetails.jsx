@@ -1,16 +1,14 @@
 import { useSelector } from 'react-redux';
 import { selectCamperById } from '../../redux/campers/selectors';
 import styles from './CamperDetails.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { formatEU } from '../../helpers/format';
-import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 import { CommonSvg } from '../CommonSvg/CommonSvg';
+import ImageSlider from '../ImageSlider/ImageSlider';
 
 export const CamperDetails = () => {
   const camper = useSelector(selectCamperById);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
 
   useEffect(() => {}, [camper]);
 
@@ -21,17 +19,8 @@ export const CamperDetails = () => {
   const images = camper.gallery;
   const formattedPrice = formatEU(camper.price);
 
-  const handleImageClick = src => {
-    setSelectedImage(src);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
   return (
-    <div className={styles.camperItem}>
+    <section className={styles.camperItem}>
       {/* camper details box */}
       <div className={styles.itemDetais}>
         {/* title box */}
@@ -57,26 +46,11 @@ export const CamperDetails = () => {
           </div>
         </div>
 
-        <ul className={styles.photoContainer}>
-          {images.map((elem, idx) => (
-            <li className={styles.photoWrapper} key={idx}>
-              <img
-                key={idx}
-                className={styles.thumbPhoto}
-                src={`${elem.thumb}`}
-                onClick={() => handleImageClick(elem.original)}
-              />
-            </li>
-          ))}
-        </ul>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          imageSrc={selectedImage}
-        />
+        <ImageSlider images={images} />
+
         <p className={styles.describtion}>{camper.description}</p>
       </div>
-    </div>
+    </section>
   );
 };
 

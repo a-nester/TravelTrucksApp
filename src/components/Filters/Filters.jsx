@@ -14,7 +14,7 @@ export const Filters = () => {
     dispatch(getFilteredCampers(filters));
   };
   return (
-    <div className={styles.fitersContainer}>
+    <section className={styles.fitersContainer}>
       <Location />
       <h3 className={styles.filtersTitle}>Filters</h3>
       <Equipment />
@@ -26,7 +26,7 @@ export const Filters = () => {
       >
         Search
       </button>
-    </div>
+    </section>
   );
 };
 

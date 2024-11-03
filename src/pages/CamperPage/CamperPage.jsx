@@ -18,8 +18,8 @@ export const CamperPage = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.camperContainer}>
-      {camper && <CamperDetails camper={camper} />}
+    <section className={styles.camperContainer}>
+      {camper && <CamperDetails />}
       <ul className={styles.menu}>
         <li>
           <Link to="features">Features</Link>
@@ -36,7 +36,7 @@ export const CamperPage = () => {
       </ul>
       <div className={styles.devider}></div>
       <Outlet />
-    </div>
+    </section>
   );
 };
 
