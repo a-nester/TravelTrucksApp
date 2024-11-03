@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
   padding-top: 44px;
   align-items: center;
 }
@@ -16,15 +17,22 @@
   display: flex;
   flex-direction: column;
   gap: 100px;
-  width: 641px;
-  padding: 44px 52px;
+  width: 100%;
+
+  padding: 12px 6px;
   background-color: var(--grey-input);
   border-radius: 10px;
 }
 
+@media only screen and (min-width: 768px) {
+  .detailsContainer {
+    padding: 44px 52px;
+  }
+}
+
 @media only screen and (min-width: 1440px) {
   .detailsContainer {
-    width: 100%;
+    max-width: 641px;
   }
 }
 

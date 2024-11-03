@@ -52,7 +52,7 @@ export const BookingForm = () => {
   };
 
   return (
-    <div className={styles.bookingContainer}>
+    <section className={styles.bookingContainer}>
       <div className={styles.titleBox}>
         <h3>Book your campervan now</h3>
         <p className={styles.text}>
@@ -154,7 +154,7 @@ export const BookingForm = () => {
           </button>
         </Form>
       </Formik>
-    </div>
+    </section>
   );
 };
 

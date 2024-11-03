@@ -8,7 +8,7 @@ export const HomePage = () => {
     navigate('/catalog');
   };
   return (
-    <div className={styles.heroContainer}>
+    <section className={styles.heroContainer}>
       {/* <div className={styles.wrapper}> */}
       <div className={styles.text}>
         <h1>Campers of your dreams</h1>
@@ -18,7 +18,7 @@ export const HomePage = () => {
         </button>
       </div>
       {/* </div> */}
-    </div>
+    </section>
   );
 };
 

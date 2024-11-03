@@ -5,7 +5,7 @@ import styles from './Layout.module.css';
 
 export const Layout = () => {
   return (
-    <div className="container">
+    <section className="container">
       <header className={styles.headerContainer}>
         <NavBar />
       </header>
@@ -13,7 +13,7 @@ export const Layout = () => {
         <Message />
         <Outlet />
       </main>
-    </div>
+    </section>
   );
 };
 

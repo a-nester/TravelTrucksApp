@@ -27,7 +27,7 @@ export const CamperFeatures = () => {
   };
 
   return (
-    <div className={styles.featuresContainer}>
+    <section className={styles.featuresContainer}>
       <div className={styles.detailsContainer}>
         <div className={styles.badges}>
           {Object.keys(camperOptions).map(
@@ -58,7 +58,7 @@ export const CamperFeatures = () => {
         </div>
       </div>
       <BookingForm />
-    </div>
+    </section>
   );
 };
 

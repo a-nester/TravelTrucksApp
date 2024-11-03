@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
 
 .itemTitleWrapper {
@@ -62,23 +63,6 @@
   font-size: 16px;
   font-weight: 400;
   text-align: left;
-}
-
-.photoContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 48px;
-}
-
-.photoWrapper {
-  width: 292px;
-  height: 312px;
-}
-
-.thumbPhoto {
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
 }
 
 .describtion {

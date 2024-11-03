@@ -45,7 +45,7 @@ export const Camper = ({ element }) => {
   };
 
   return (
-    <div className={styles.camperItem}>
+    <section className={styles.camperItem}>
       <img className={styles.ItemImg} src={image} />
 
       {/* camper details box */}
@@ -111,7 +111,7 @@ export const Camper = ({ element }) => {
           Show more
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

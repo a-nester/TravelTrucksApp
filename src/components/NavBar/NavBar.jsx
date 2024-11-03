@@ -8,7 +8,7 @@ export const NavBar = () => {
   const path = useLocation().pathname;
 
   return (
-    <div className={styles.navBar}>
+    <section className={styles.navBar}>
       <NavLink to="/" className={styles.logo}>
         <svg width={136} height={16}>
           <use href={`${sprite}#Logo`} />
@@ -22,6 +22,6 @@ export const NavBar = () => {
           Catalog
         </NavLink>
       </div>
-    </div>
+    </section>
   );
 };
